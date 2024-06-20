@@ -3,13 +3,14 @@
     margin: 0;
     padding: 0;
     overflow-y: hidden !important;
+    height: 100vh !important;
 }
 
 .login-page-container {
     padding-inline: 1rem;
     margin-top: -2.9rem;
     width: 100%;
-    height: 100vh;
+    height: 100vh !important ;
     background-image:linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('../assets/login-background.jpg');
     background-position: center;
     background-size: cover;
@@ -46,7 +47,7 @@
                 align-items: center;
                 box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
                 border-radius: 10px;
-                background-color: rgba(255, 255, 255, 0.64); /* Added background color */
+                background-color: rgba(255, 255, 255, 0.482); /* Added background color */
                 z-index: 10; /* Added z-index */
                 position: relative; /* Ensure it respects z-index */
             }

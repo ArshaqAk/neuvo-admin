@@ -1,0 +1,28 @@
+
+.category-container{
+    background-image:linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('../assets/dashboard-background.jpg');
+}
+.category-right{
+    height: 100vh;
+}
+.search-box{
+    display: flex;
+    position: relative;
+    align-items: center;
+    background-color: transparent;
+}
+.search-box input{
+    width: 100%;
+    background: transparent;
+    border: 1px ridge gray;
+    outline: none;
+}
+
+.search-icon{
+    position: relative;
+    left: -2rem;
+    font-size: large;
+}
+.card{
+    background-color: transparent;
+}

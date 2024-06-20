@@ -27,7 +27,7 @@ const Login = () => {
       })
       console.log(response);
       if(response.data.success === true){
-        alert('Login successful')
+        // alert('Login successful')
       navigate('/dashboard')
       }
       else{
@@ -54,7 +54,7 @@ const Login = () => {
               {/* <span className='mt-2 mb-5  w-100  d-flex justify-content-center'><LoginGoogle/></span> */}
             </div>
             <div className="col-lg-7 col-sm-12  d-flex flex-column align-items-center justify-content-center">
-              <input onChange={(e) => setLoginDetails({ ...loginDetails, email: e.target.value })} className='form-control mb-1 login_input_fleld ' type="email" placeholder='Phone' />
+              <input onChange={(e) => setLoginDetails({ ...loginDetails, phone: e.target.value })} className='form-control mb-1 login_input_fleld ' type="email" placeholder='Phone' />
               <div className="password_container">
               <input onChange={(e) => setLoginDetails({ ...loginDetails, password: e.target.value })} className='form-control my-1 login_input_fleld' type={showpassword ? "text" : "password"} placeholder='Password' />
                 <span className='eye' onClick={togglepassword}>{showpassword ? <FaEye /> : <FaEyeSlash />}</span>
