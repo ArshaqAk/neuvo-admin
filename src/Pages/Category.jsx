@@ -13,10 +13,12 @@ import {
   MDBBtn,
   MDBRipple
 } from 'mdb-react-ui-kit';
+import Createcategory from '../Components/Createcategory';
 
 const Category = () => {
     const [categories, setCategories] = useState([]);
 
+    // Get category
     const fetchCategory = async() =>{
         try {
             const response =   await axios.get(`${baseurl}/admin/category/view/list/1`)
@@ -25,10 +27,12 @@ const Category = () => {
             console.error('Error fetching categories:', error);
         }
     }
-
     useEffect(()=>{
         fetchCategory()
     },[])
+
+    //create category
+
 
     // console.log(categories)
 
@@ -49,7 +53,7 @@ const Category = () => {
               </div>
             </div>
             <div className="col-6 text-end">
-              <button className='btn btn-secondary text-lowercase'>create category</button>
+              <Createcategory/>
             </div>
           </div>
            {/* category cards */}
@@ -65,7 +69,7 @@ const Category = () => {
                     </a>
                   </MDBRipple>
                   <MDBCardBody>
-                    <MDBCardTitle>Card title</MDBCardTitle>
+                    <MDBCardTitle>{item.category_name}</MDBCardTitle>
                     <MDBCardText>
                       Some quick example text to build on the card title and make up the bulk of the card content
                     </MDBCardText>
