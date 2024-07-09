@@ -4,6 +4,7 @@ import Login from './Pages/Login'
 import { Dashboard } from './Pages/Dashboard'
 import Home from './Pages/Home'
 import Category from './Pages/Category'
+import Contest from './Pages/Contest'
 function App() {
 
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path='/dashboard' element={<Dashboard/>}/>
       <Route path='/home' element={<Home/>}/>
       <Route path='/category' element={<Category/>}/>
+      <Route path='/contest' element={<Contest/>}/>
     </Routes>
     </>
   )

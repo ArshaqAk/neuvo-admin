@@ -1,0 +1,17 @@
+/* .form-control{
+    background-color:transparent;
+    color: white;
+    border: 1px ridge black;
+}
+
+.form-control::placeholder{
+    color:#f6eeee ;
+}
+.form-control:focus{
+    background-color: transparent;
+    color: white;
+}
+.select option{
+    color: rgb(255, 255, 255);
+    background-color: black;
+} */

@@ -4,6 +4,9 @@ import { baseurl } from "../Base_url/baseUrl";
 import { useEffect, useState } from "react";
 import Sidebar from '../Components/Sidebar';
 import { IoIosSearch } from "react-icons/io";
+import { MdOutlineEdit } from "react-icons/md";
+import { MDBPagination, MDBPaginationItem, MDBPaginationLink } from 'mdb-react-ui-kit';
+
 import {
   MDBCard,
   MDBCardBody,
@@ -17,29 +20,33 @@ import Createcategory from '../Components/Createcategory';
 
 const Category = () => {
     const [categories, setCategories] = useState([]);
+    const [currentPage,setCurrentPage] = useState(1);
 
     // Get category
-    const fetchCategory = async() =>{
+    const fetchCategory = async(page) =>{
         try {
-            const response =   await axios.get(`${baseurl}/admin/category/view/list/1`)
+            const response =   await axios.get(`${baseurl}/admin/category/view/list/${page}`)
             setCategories(response.data.data.categoryList)
         } catch (error) {
             console.error('Error fetching categories:', error);
         }
     }
     useEffect(()=>{
-        fetchCategory()
-    },[])
+        fetchCategory(currentPage)
+    },[currentPage])
 
-    //create category
-
+    //handl pagination number
+    const handlePagechange=(page)=>{
+      setCurrentPage(page)
+    }
+    
 
     // console.log(categories)
 
   return (
     <>
     <div className="category-container">
-      <div className="row">
+      <div className="row mb-4">
         <div className="col-3">
           <Sidebar/>
         </div>
@@ -73,15 +80,45 @@ const Category = () => {
                     <MDBCardText>
                       Some quick example text to build on the card title and make up the bulk of the card content
                     </MDBCardText>
-                    <MDBBtn className='btn btn-secondary' href='#'>Button</MDBBtn>
+                    <MDBBtn className='btn btn-secondary' href='#'><MdOutlineEdit /></MDBBtn>
                   </MDBCardBody>
                 </MDBCard>
 
               </div>
             ))
            }
+
+          <div className="pagination d-flex justify-content-center mt-3">
+           <nav aria-label='...'>
+      <MDBPagination circle className='mb-0'>
+        <MDBPaginationItem>
+          <MDBPaginationLink onClick={()=>handlePagechange(currentPage - 1)} href='#' tabIndex={-1} aria-disabled='true'>
+            Previous
+          </MDBPaginationLink>
+        </MDBPaginationItem>
+        <MDBPaginationItem>
+          <MDBPaginationLink href='#'>1</MDBPaginationLink>
+        </MDBPaginationItem>
+        <MDBPaginationItem active>
+          <MDBPaginationLink href='#'>
+            2
+          </MDBPaginationLink>
+        </MDBPaginationItem>
+        <MDBPaginationItem>
+          <MDBPaginationLink href='#'>3</MDBPaginationLink>
+        </MDBPaginationItem>
+        <MDBPaginationItem>
+          <MDBPaginationLink onClick={()=>handlePagechange(currentPage + 1)} href='#' >Next</MDBPaginationLink>
+        </MDBPaginationItem>
+      </MDBPagination>
+     </nav>
+
            </div>
-        </div>
+           </div>
+
+           
+
+       </div>
       </div>
     </div>
     </>

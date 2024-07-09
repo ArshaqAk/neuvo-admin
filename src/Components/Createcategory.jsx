@@ -1,4 +1,5 @@
 import  { useState } from 'react';
+import '../Styles/createCategory.css'
 import {
   MDBBtn,
   MDBModal,
@@ -56,27 +57,26 @@ const Createcategory = () => {
   return (
     <>
     <MDBBtn className='btn btn-secondary text-lowercase' onClick={toggleOpen}>create category</MDBBtn>
-
-<MDBModal tabIndex='-1' open={centredModal} onClose={() => setCentredModal(false)}>
-  <MDBModalDialog centered>
+      <MDBModal tabIndex='-1' open={centredModal} onClose={() => setCentredModal(false)}>
+      <MDBModalDialog centered >
     <MDBModalContent >
-      <MDBModalHeader >
-        <MDBModalTitle className='text-center w-100'>Create Category</MDBModalTitle>
+      <MDBModalHeader className='bg-secondary '>
+        <MDBModalTitle className='text-center w-100 text-light'>Create Category</MDBModalTitle>
         <MDBBtn className='btn-close' color='none' onClick={toggleOpen}></MDBBtn>
       </MDBModalHeader>
-      <MDBModalBody>
+      <MDBModalBody className='bg-secondary'>
         <input className='form-control m-2' type="text" onChange={(e)=>setCreateCategory({...createCategory,category_name:e.target.value})}  placeholder='Category name' value={createCategory.category_name}/>
-        <select name="" id="" className=' form-control  ms-2' onChange={(e)=>setCreateCategory({...createCategory,category_status:e.target.value})}  value={createCategory.category_status}>
-            <option value="">Select active state</option>
+        <select name="" id="" className=' form-control select  ms-2' onChange={(e)=>setCreateCategory({...createCategory,category_status:e.target.value})}  value={createCategory.category_status}>
+            <option value="" disabled>Select active state</option>
             <option value="true">True</option>
             <option value="false">False</option>
         </select>
         <input type="file" className='form-control ms-2 my-2' />
 
       </MDBModalBody>
-      <MDBModalFooter className='d-flex justify-content-center'>
-        <MDBBtn className='btn btn-secondary' onClick={handleCreate}>Create</MDBBtn>
-      </MDBModalFooter>
+      <MDBModalFooter className='d-flex justify-content-center bg-secondary'>
+        <MDBBtn className='btn btn-outline-secondary btn-light' onClick={handleCreate}>Create</MDBBtn>
+      </MDBModalFooter >
     </MDBModalContent>
   </MDBModalDialog>
 </MDBModal>

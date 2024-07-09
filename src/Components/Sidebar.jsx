@@ -6,7 +6,7 @@ import Underline from './Underline'
 import { CiHome } from "react-icons/ci";
 import { MdOutlineDashboard } from "react-icons/md";
 import { MdOutlineCategory } from "react-icons/md";
-
+import { SlBadge } from "react-icons/sl";
 
 const Sidebar = () => {
   const currentLocation = useLocation();
@@ -42,6 +42,14 @@ const Sidebar = () => {
             <div className={currentLocation.pathname=='/category'? 'home menu-item text-primary' : "home menu-item"}>
             <MdOutlineCategory />
             <h6>Category </h6>
+          </div>
+          </Link>
+
+                  {/* contest */}
+        <Link className='menu-link' to={'/contest'}>
+            <div className={currentLocation.pathname=='/contest'? 'home menu-item text-primary' : "home menu-item"}>
+            <SlBadge />
+            <h6>Contest </h6>
           </div>
           </Link>
 
