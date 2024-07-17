@@ -2,13 +2,16 @@ import axios from 'axios';
 import { useState } from 'react'
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { baseurl } from '../Base_url/baseUrl';
 import { FiLogIn } from "react-icons/fi";
 import '../Styles/login.css'
 import login_img from '../assets/login_img.png'
-const Login = () => {
+import { useAuth } from '../AuthContext';
 
+const Login = () => {
+  const {login} = useAuth()
   const navigate=useNavigate()
+  const base_url = import.meta.env.VITE_BASE_URL
+
   const [showpassword,setShowpassword]=useState(false)
     const togglepassword=()=>{
         setShowpassword(!showpassword)
@@ -21,14 +24,14 @@ const Login = () => {
   //Login
   const handleLogin=async()=>{
     try {
-      const response = await axios.post(`${baseurl}/admin/login`, {
+      const response = await axios.post(`${base_url}/admin/login`, {
         phone:loginDetails.phone,
         password:loginDetails.password
       })
       console.log(response);
       if(response.data.success === true){
-        // alert('Login successful')
-      navigate('/dashboard')
+        login();
+        navigate('/dashboard')
       }
       else{
         alert('Invalid details')

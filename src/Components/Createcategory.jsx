@@ -11,9 +11,10 @@ import {
   MDBModalFooter,
 } from 'mdb-react-ui-kit';
 import axios from 'axios';
-import { baseurl } from '../Base_url/baseUrl';
 
 const Createcategory = () => {
+  const base_url = import.meta.env.VITE_BASE_URL
+
     const [centredModal, setCentredModal] = useState(false);
     const toggleOpen = () => setCentredModal(!centredModal);
     const [createCategory, setCreateCategory] = useState({
@@ -28,7 +29,7 @@ const Createcategory = () => {
         }
         else{
             try {
-                const response = await axios.post(`${baseurl}/admin/category/create`, {
+                const response = await axios.post(`${base_url}/admin/category/create`, {
                     category_name: createCategory.category_name,
                     active: createCategory.category_status
                 },

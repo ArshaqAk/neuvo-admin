@@ -1,6 +1,5 @@
 import '../Styles/category.css'
 import axios from "axios";
-import { baseurl } from "../Base_url/baseUrl";
 import { useEffect, useState } from "react";
 import Sidebar from '../Components/Sidebar';
 import { IoIosSearch } from "react-icons/io";
@@ -21,11 +20,13 @@ import Createcategory from '../Components/Createcategory';
 const Category = () => {
     const [categories, setCategories] = useState([]);
     const [currentPage,setCurrentPage] = useState(1);
+    const base_url = import.meta.env.VITE_BASE_URL
+
 
     // Get category
     const fetchCategory = async(page) =>{
         try {
-            const response =   await axios.get(`${baseurl}/admin/category/view/list/${page}`)
+            const response =   await axios.get(`${base_url}/admin/category/view/list/${page}`)
             setCategories(response.data.data.categoryList)
         } catch (error) {
             console.error('Error fetching categories:', error);
